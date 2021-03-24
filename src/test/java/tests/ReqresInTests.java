@@ -3,6 +3,7 @@ package tests;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -121,6 +122,15 @@ public class ReqresInTests {
                 .then().statusCode(400)
                 .log().body()
                 .body("error", is("Missing email or username"));
+    }
+
+    @Test
+    void resourcesNamesListTest() {
+        given().when()
+                .get("/api/unknown")
+                .then().statusCode(200)
+                .log().body()
+                .body("data.id.findAll{it > 0}.flatten().size()", is(not(0)));
     }
 
 }
