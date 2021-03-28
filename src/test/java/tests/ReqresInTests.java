@@ -102,7 +102,7 @@ public class ReqresInTests {
                .body("data", is(notNullValue()));
     }
 
-    @Test // this test doesn't work as intended because the server returns the error answer. Maybe some temporary issue
+    @Test // this test doesn't work as intended because the server returns the wrong answer (not the one described in documentation). Maybe some temporary issue
     void successfulLoginTest(){
         given()
                 .body("{ \"email\": \"eve.holt@reqres.in\",\n \"password\": \"pistol\"\n }")
